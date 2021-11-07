@@ -17,7 +17,7 @@ function OrderModal(props) {
     if(props.currentRentTime === "выставка 3 дня"){
       props.setCurrentRentTime("3 дня")
     }
-  }, []);
+  }, [props]);
   const handleCloseModal = (e) => {
     e.preventDefault()
     props.setShowOrder(false);
@@ -46,7 +46,7 @@ console.log(e.target.nextSibling.classList.toggle("hidden"))
     <>
       <form className="order-modal">
         <h1>Ваша заявка</h1>
-        <img src={closeModal} onClick={handleCloseModal}></img>
+        <img alt="" src={closeModal} onClick={handleCloseModal}></img>
         <ul>
           <li>
             <p>Фотобудка с ширмой</p>

@@ -36,7 +36,7 @@ function OrderItem(props) {
     return options;
   };
   
-  console.log()
+
   useEffect(() => {
 
     if(props.currentRentTime === "2 дня"){
@@ -45,7 +45,7 @@ function OrderItem(props) {
     if(props.currentRentTime === "3 дня"){
       props.setCurrentRentTime("выставка 3 дня")
     }
-  }, [allOptions]);
+  }, [props]);
   function handleClickNext() {
     if (currentSlide === 1) {
       setCurrentSlide(2);
@@ -121,7 +121,7 @@ function OrderItem(props) {
             onClick={handleClickNext}
             src={button}
           ></img>
-          <img src={currentSlideSrc}></img>
+          <img alt="current photobooth slide" src={currentSlideSrc}></img>
         </div>
         <div className="slider__navigation">
           {sliderLength.map((sliderCount, index) => {
@@ -149,7 +149,7 @@ function OrderItem(props) {
         {props.additionalOptions().map((option, index) => {
           return (
             <div key={index}>
-              <img src={optionPhoto}></img>
+              <img alt="additional option" src={optionPhoto}></img>
               <div>
                 <h1>{option.label}</h1>
                 <span>{option.price}₽</span>
@@ -157,7 +157,7 @@ function OrderItem(props) {
               <input
                 id={index}
                 checked={
-                 currentOptions.some((element) => element.label == additionalOptions()[index].label  )  ? true : false
+                 currentOptions.some((element) => element.label === additionalOptions()[index].label  )  ? true : false
                 }
                 type="checkbox"
                 onChange={handleSubmitOption}
@@ -165,7 +165,7 @@ function OrderItem(props) {
             </div>
           );
         })}
-        {calculatePrice()}
+        
         <div className="block-order__rent-time">
           <p>Укажите время аренды</p>
           {rentTimeOptions.map((option, index) => {
@@ -185,7 +185,7 @@ function OrderItem(props) {
           })}
         </div>
 
-        <h1 className="block-order__final-price"></h1>
+        <h1 className="block-order__final-price">{calculatePrice()}</h1>
         {currentOptions.length < 1 ? optionsError() : ""}
         <button
           className="block-order__order-button"
