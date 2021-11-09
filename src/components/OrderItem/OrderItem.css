@@ -139,6 +139,7 @@
 .block-order__item-option span {
     font-size: 12px;
     color: #EE3D48;
+    font-weight: 500;
 }
 
 .block-order__rent-time p {
