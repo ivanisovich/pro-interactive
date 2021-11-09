@@ -6,13 +6,11 @@ import OrderModal from "./components/OrderModal/OrderModal";
 
 function App() {
   const [currentRentTime, setCurrentRentTime] = useState("1 час");
-  const [currentOptions, setCurrentOptions] = useState([
-    { label: "Разработка макета #1", price: 2500 },
-  ]);
+  const [currentOptions, setCurrentOptions] = useState([{label:"Разработка макета #1",price:2500}]);
   const [photoBoothNumber, setPhotoBoothNumber] = useState(1);
   const [showOrder, setShowOrder] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
-
+  
   return (
     <div className="App">
       {showOrder ? (
