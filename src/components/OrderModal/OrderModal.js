@@ -1,6 +1,7 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import closeModal from "../../img/close-modal.svg";
 import "./OrderModal.css";
+
 function OrderModal(props) {
   const rentTimeOptions = [
     "1 час",
@@ -11,76 +12,112 @@ function OrderModal(props) {
     "3 дня",
   ];
   useEffect(() => {
-    if(props.currentRentTime === "выставка 2 дня"){
-      props.setCurrentRentTime("2 дня")
+    if (props.currentRentTime === "выставка 2 дня") {
+      props.setCurrentRentTime("2 дня");
     }
-    if(props.currentRentTime === "выставка 3 дня"){
-      props.setCurrentRentTime("3 дня")
+    if (props.currentRentTime === "выставка 3 дня") {
+      props.setCurrentRentTime("3 дня");
     }
   }, [props]);
   const handleCloseModal = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     props.setShowOrder(false);
   };
-  const handleSetRentTime = (e) =>{
+  const handleSetRentTime = (e) => {
+    props.setCurrentRentTime(e.target.innerText);
+  };
 
-    props.setCurrentRentTime(e.target.innerText)
-  }
-  const calculatePrice = () => {
+  const calculatePrice = (noOptions) => {
     let price = 14500;
     props.currentOptions.forEach((option) => {
       price += option.price;
     });
 
-    let  rentTimeAdjustment = rentTimeOptions.indexOf(props.currentRentTime) * 500;
+    let rentTimeAdjustment =
+      rentTimeOptions.indexOf(props.currentRentTime) * 500;
     price += rentTimeAdjustment;
     props.setTotalPrice(price);
+    if (noOptions === "") {
+      price = 14500;
+      price += rentTimeAdjustment;
+    }
+
     return price;
   };
-  const OpenRentTimeOptions = (e) =>{
-console.log(e.target.nextSibling.classList.toggle("hidden"))
-  }
-  console.log(calculatePrice());
-       console.log(props.currentRentTime)
+  const OpenRentTimeOptions = (e) => {
+    e.target.nextSibling.classList.toggle("hidden");
+  };
+  const handleSubmitButton = (e) => {
+    e.preventDefault();
+  };
+  let noOptions = "";
+
   return (
     <>
       <form className="order-modal">
         <h1>Ваша заявка</h1>
-        <img alt="" src={closeModal} onClick={handleCloseModal}></img>
-        <ul>
-          <li>
-            <p>Фотобудка с ширмой</p>
-            <span>Размер: </span>
-            <span>2м x 1.5м x 2м</span>
-          </li>
-        </ul>
-        <ul></ul>
-   
-           <span onClick={OpenRentTimeOptions}>{props.currentRentTime}</span>
-          <ul className="order-modal__rent-time hidden">
-            <li onClick={handleSetRentTime}>
-              1 час
+        <img
+          className="order-modal__close-button"
+          alt=""
+          src={closeModal}
+          onClick={handleCloseModal}
+        ></img>
+        <div className="order-modal__item">
+          <div className="order-modal__item-description">
+            <div>
+              <p>Фотобудка с ширмой #{props.photoBoothNumber}</p>
+              <span className="order-modal__item-size">Размер: </span>
+              <span className="order-modal__item-size order-modal__item-size-grey">
+                2м x 1.5м x 2м
+              </span>
+              <p
+                className="order-modal__rent-time-toggle"
+                onClick={OpenRentTimeOptions}
+              >
+                {props.currentRentTime}
+              </p>
+              <ul className="order-modal__rent-time hidden">
+                <li onClick={handleSetRentTime}>1 час</li>
+                <li onClick={handleSetRentTime}>2 часа</li>
+                <li onClick={handleSetRentTime}>3 часа</li>
+                <li onClick={handleSetRentTime}>5 часов</li>
+                <li onClick={handleSetRentTime}>2 дня </li>
+                <li onClick={handleSetRentTime}>3 дня</li>
+              </ul>
+            </div>
+
+            <span className="order-modal__item-description__price">
+              {" "}
+              {calculatePrice(noOptions)} ₽
+            </span>
+          </div>
+
+          <ul className="order-modal__item-options">
+            {props.currentOptions.map((item, index) => {
+              return (
+                <li key={index} className="order-modal__item-option">
+                  <span>{item.label}</span>
+                  <span>{item.price}₽</span>
+                </li>
+              );
+            })}
+            <li className="order-modal__final-price">
+              <span>Итого:</span>
+              <span>{calculatePrice()}₽</span>
             </li>
-            <li onClick={handleSetRentTime}>
-              2 часа
-            </li>
-            <li onClick={handleSetRentTime}>
-              3 часа 
-            </li>
-            <li onClick={handleSetRentTime}>5 часов</li>
-            <li onClick={handleSetRentTime}>2 дня </li>
-            <li onClick={handleSetRentTime}>3 дня</li>
           </ul>
-        <h1>{calculatePrice()}</h1>
+        </div>
+
         <div className="order-modal__feedback">
           <input placeholder="+7 (000) 000 00 00" type="number"></input>
-          <span>Позвоните мне</span>
-          
-          
+          <div>
+            <span>Позвоните мне</span>
+          </div>
         </div>
-        <button type="submit">Отправить заявку</button>
+        <button onClick={handleSubmitButton} type="submit">
+          Отправить заявку
+        </button>
       </form>
-     
     </>
   );
 }

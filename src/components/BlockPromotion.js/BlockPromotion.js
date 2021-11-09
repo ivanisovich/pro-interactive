@@ -11,7 +11,7 @@ function BlockPromotion() {
   return (
     <>
       <div className="block-promotion">
-        <img alt="logo" src={logo}></img>
+        <img className="block-promotion__logo" alt="logo" src={logo}></img>
         <div className="block-promotion__video">
           <img
             alt=""
@@ -23,9 +23,18 @@ function BlockPromotion() {
             className="block-promotion__video-preview"
             src={videoPreview}
           ></img>
-          <div className="block-promotion_play-button">
-            <img alt="promotion video play button" src={playVideo}></img>
-          </div>
+          <form action="https://www.youtube.com/watch" method="get">
+            <input type="hidden" name="v" value="IZ-WcElrA-c" />
+            <button
+              className="block-promotion_play-button-hidden"
+              type="submit"
+            >
+              <div className="block-promotion_play-button">
+                <img alt="promotion video play button" src={playVideo}></img>
+              </div>
+            </button>
+          </form>
+
           <div className="block-promotion__video__circle">
             <div />
           </div>
@@ -35,29 +44,30 @@ function BlockPromotion() {
           <h1 className="block-promotion__header">Фото на </h1>
           <h1 className="block-promotion__header">праздник</h1>
           <p className="block-promotion__features__title">
-            Lorem ipsum dolor sit amet, consectetur <a href=" ">adipiscing elit</a>, sed
-            do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Lorem ipsum dolor sit amet, consectetur{" "}
+            <a href=" ">adipiscing elit</a>, sed do eiusmod tempor <br />{" "}
+            incididunt ut labore et dolore magna aliqua.
           </p>
           <div className="block-promotion__features-wrapper">
-            <article  className="block-promotion__feature">
+            <article className="block-promotion__feature">
               <img alt="" src={infinity}></img>
               <p>
                 Безлимитная <br /> печать фото
               </p>
             </article>
-            <article  className="block-promotion__feature">
+            <article className="block-promotion__feature">
               <img alt="" src={mask}></img>
               <p>
                 Фотореквизит <br /> в наличии
               </p>
             </article>
-            <article  className="block-promotion__feature">
+            <article className="block-promotion__feature">
               <img alt="" src={photos}></img>
               <p>
                 Фотоотчет в <br /> электронном виде
               </p>
             </article>
-            <article  className="block-promotion__feature">
+            <article className="block-promotion__feature">
               <img alt="" src={price}></img>
               <p>
                 Цены <br /> ниже рынка

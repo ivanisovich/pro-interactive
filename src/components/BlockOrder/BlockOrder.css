@@ -1,29 +1,18 @@
-.slider__navigation {
-    display: flex;
+.block-order__header {
+    margin-bottom: 37px;
+    margin-left: 8px;
 }
 
-.slider__navigation .active {
-    width: 24px;
-    height: 4px;
-    background: #D5DAE0;
-    border-radius: 10px;
-}
-
-.slider__navigation__item {
-    width: 8px;
-    height: 4px;
-    background: #d5dae0;
-    border-radius: 10px;
-    margin-right: 8px;
-}
-
-.slider__navigation .active div {
-    border-radius: 10px;
-    width: 16px;
-    height: 4px;
-    background: #EE3D48;
-}
-.block-order__rent-time .active{
-    background-color:#EE3D48 ;
-
+.block-order__show-more-button {
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    color: #EE3D48;
+    padding: 10px;
+    background: #FFFFFF;
+    border: 1px solid #EE3D48;
+    border-radius: 6px;
+    margin-left: 20px;
+    width: 90%;
+    margin-bottom: 40px;
 }

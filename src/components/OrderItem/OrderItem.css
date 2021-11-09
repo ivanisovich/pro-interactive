@@ -1,0 +1,223 @@
+.error {
+    position: absolute;
+    z-index: 1;
+    color: red;
+    border: 1px solid rgb(255, 0, 0);
+    border-radius: 8px;
+    padding: 30px;
+    width: 200px;
+    display: flex;
+    margin-top: -130px;
+    margin-bottom: 30px;
+    background-color: white;
+}
+
+.slider__previous {
+    position: absolute;
+    transform: rotate(180deg);
+    margin-top: 92px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.slider__next {
+    position: absolute;
+    margin-top: 93px;
+    margin-left: 253px;
+    cursor: pointer;
+}
+
+.slider__navigation {
+    display: flex;
+    justify-content: center;
+    width: 98%;
+    margin-top: 9px;
+    margin-bottom: 15px;
+}
+
+.slider__navigation .active {
+    width: 24px;
+    height: 4px;
+    background: #D5DAE0;
+    border-radius: 10px;
+}
+
+.slider__navigation__item {
+    width: 8px;
+    height: 4px;
+    background: #d5dae0;
+    border-radius: 10px;
+    margin-right: 8px;
+}
+
+.slider__navigation .active div {
+    border-radius: 10px;
+    width: 16px;
+    height: 4px;
+    background: #EE3D48;
+}
+
+.block-order__photo-booth-number {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.block-order__item {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 3vw;
+    padding-top: 10px;
+    margin-bottom: 24px;
+}
+
+.block-order__item-size {
+    font-weight: 500;
+    font-size: 12px;
+    text-align: center;
+    margin-right: 1px;
+}
+
+.block-order__item-size-grey {
+    color: #6A6A6A;
+    ;
+}
+
+.block-order__item-options__header {
+    display: flex;
+    margin-top: 25px;
+    margin-left: 1px;
+    margin-bottom: 0px;
+    padding-left: 4px;
+    padding-bottom: 3px;
+    font-size: 12px;
+    font-weight: 700;
+    width: 77px;
+    max-height: 20px !important;
+    line-height: 12px;
+    color: #EE3D48;
+    border-bottom: 2px solid #EE3D48;
+    background: #FAFAFA;
+}
+
+.block-order__item-options {
+    max-height: 151px;
+    overflow-y: scroll;
+    padding-left: 10px;
+    background: #FAFAFA;
+    overflow-x: hidden;
+}
+
+.block-order__item-option div {
+    padding-left: 6px;
+    margin-top: -1px;
+}
+
+.block-order__item-option div h1 {
+    line-height: 10px;
+    width: 20%;
+}
+
+.block-order__item-option span {
+    letter-spacing: 0.8px;
+}
+
+.block-order__item-option {
+    border-bottom: 1px solid #EBEBEB;
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 7px;
+}
+
+.block-order__item-option img {
+    margin-top: -3px;
+}
+
+.block-order__item-option h1 {
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.block-order__item-option span {
+    font-size: 12px;
+    color: #EE3D48;
+}
+
+.block-order__rent-time p {
+    font-size: 14px;
+    color: #939598;
+    padding-left: 6px;
+    margin-top: 12px;
+    margin-bottom: 7px;
+}
+
+.block-order__rent-time span {
+    display: inline-flex;
+    width: fit-content;
+    cursor: pointer;
+    background: #F1F2F2;
+    border-radius: 6px;
+    margin-right: 10px;
+    margin-bottom: 22px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    margin-bottom: 7px;
+    padding-top: 6px;
+    padding-bottom: 4px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.block-order__rent-time .active {
+    font-weight: 300;
+    background-color: #EE3D48;
+    color: #fff;
+}
+
+.block-order ::-webkit-scrollbar {
+    width: 3px;
+}
+
+::-webkit-scrollbar-track {
+    width: 3px;
+    background: #EBEBEB;
+    border-left: 1px solid white;
+    border-right: 1px solid white
+}
+
+.block-order ::-webkit-scrollbar-thumb {
+    background: #EE3D48;
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ec727a;
+    opacity: 0.8;
+}
+
+.block-order__final-price {
+    padding-top: 0px;
+    line-height: 26px;
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
+
+.block-order__final-price__wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.block-order__order-button {
+    background: #EE3D48;
+    border-radius: 6px;
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 20px;
+    margin-top: 16px;
+    padding: 10px 10px 10px 10px;
+    display: flex;
+    height: 100%;
+    text-align: center;
+    color: #FFFFFF;
+    border: none;
+}

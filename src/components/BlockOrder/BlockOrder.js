@@ -29,15 +29,13 @@ function BlockOrder(props) {
     return options;
   };
   useEffect(() => {
-   
     setAllOptions(additionalOptions());
   }, []);
- 
- 
+
   return (
     <>
       <div className="block-order">
-        <h1>Фотобудки</h1>
+        <h1 className="block-order__header">Фотобудки</h1>
         {OrderItems().map((item, index) => {
           return (
             <OrderItem
@@ -55,7 +53,12 @@ function BlockOrder(props) {
             ></OrderItem>
           );
         })}
-        <button onClick={handleLoadMore}>Показать еще</button>
+        <button
+          className="block-order__show-more-button"
+          onClick={handleLoadMore}
+        >
+          Показать еще
+        </button>
       </div>
     </>
   );

@@ -3,11 +3,13 @@ import slide_1 from "../../img/photo.jpg";
 import slide_2 from "../../img/photo-1.jpg";
 import slide_3 from "../../img/photo-2.jpg";
 import optionPhoto from "../../img/photo-option.jpg";
+import "./OrderItem.css";
+import "./CustomCheckbox.css";
 import button from "../../img/button.png";
 
 function OrderItem(props) {
   const [currentSlide, setCurrentSlide] = useState(1);
-  const allOptions = props.allOptions
+  const allOptions = props.allOptions;
   const [currentOptions, setCurrentOptions] = [
     props.currentOptions,
     props.setCurrentOptions,
@@ -35,15 +37,13 @@ function OrderItem(props) {
     }
     return options;
   };
-  
 
   useEffect(() => {
-
-    if(props.currentRentTime === "2 дня"){
-      props.setCurrentRentTime("выставка 2 дня")
+    if (props.currentRentTime === "2 дня") {
+      props.setCurrentRentTime("выставка 2 дня");
     }
-    if(props.currentRentTime === "3 дня"){
-      props.setCurrentRentTime("выставка 3 дня")
+    if (props.currentRentTime === "3 дня") {
+      props.setCurrentRentTime("выставка 3 дня");
     }
   }, [props]);
   function handleClickNext() {
@@ -54,7 +54,6 @@ function OrderItem(props) {
       setCurrentSlide(3);
       setCurrentSlideSrc(slide_3);
     }
-    
   }
 
   function handleClickPrevious() {
@@ -67,13 +66,17 @@ function OrderItem(props) {
     }
   }
   function handleSubmitOption(e) {
-    if (!currentOptions.includes(allOptions[e.target.id])) {
+    if (
+      !currentOptions.some(
+        (element) => element.label === additionalOptions()[e.target.id].label
+      )
+    ) {
       let newOptions = [...currentOptions];
       newOptions.push(allOptions[e.target.id]);
       setCurrentOptions(newOptions);
     } else {
       let newOptions = currentOptions.filter(
-        (item) => item !== allOptions[e.target.id]
+        (item) => item.label !== additionalOptions()[e.target.id].label
       );
 
       setCurrentOptions(newOptions);
@@ -97,27 +100,29 @@ function OrderItem(props) {
       price += option.price;
     });
 
-    let  rentTimeAdjustment = rentTimeOptions.indexOf(props.currentRentTime) * 500;
+    let rentTimeAdjustment =
+      rentTimeOptions.indexOf(props.currentRentTime) * 500;
     price += rentTimeAdjustment;
+
     props.setTotalPrice(price);
     return price;
   };
   const optionsError = () => {
-    return <span>Выберите хотя бы одну опцию !</span>;
+    return <span className="error">Выберите хотя бы одну опцию !</span>;
   };
   return (
     <>
-      <div className="block-order">
+      <div className="block-order__item">
         <div className="block-order__slider">
           <img
             className="slider__previous"
-            alt="previous slide"
+            alt=""
             onClick={handleClickPrevious}
             src={button}
           ></img>
           <img
             className="slider__next"
-            alt="next slide"
+            alt=""
             onClick={handleClickNext}
             src={button}
           ></img>
@@ -140,32 +145,44 @@ function OrderItem(props) {
           })}
         </div>
 
-        <h1>Фотобудка с ширмой #{props.photoBoothNumber}</h1>
-        <span>Размер:</span>
-        <span>2м x 1.5м x 2 м</span>
-        <p>Доп. опции</p>
-        {currentOptions.length < 1 ? optionsError() : ""}
+        <h1 className="block-order__photo-booth-number">
+          Фотобудка с ширмой #{props.photoBoothNumber}
+        </h1>
+        <span className="block-order__item-size">Размер: </span>
+        <span className="block-order__item-size block-order__item-size-grey">
+          2м x 1.5м x 2 м
+        </span>
+        <p className="block-order__item-options__header">Доп. опции</p>
+        <div className="block-order__item-options">
+          {props.additionalOptions().map((option, index) => {
+            return (
+              <div className="block-order__item-option" key={index}>
+                <img alt="additional option" src={optionPhoto}></img>
+                <div>
+                  <h1>{option.label}</h1>
+                  <span>{option.price}₽</span>
+                </div>
 
-        {props.additionalOptions().map((option, index) => {
-          return (
-            <div key={index}>
-              <img alt="additional option" src={optionPhoto}></img>
-              <div>
-                <h1>{option.label}</h1>
-                <span>{option.price}₽</span>
+                <label className="control control-checkbox">
+                  <input
+                    id={index}
+                    checked={
+                      currentOptions.some(
+                        (element) =>
+                          element.label === additionalOptions()[index].label
+                      )
+                        ? true
+                        : false
+                    }
+                    type="checkbox"
+                    onChange={handleSubmitOption}
+                  ></input>
+                  <div className="control_indicator"></div>
+                </label>
               </div>
-              <input
-                id={index}
-                checked={
-                 currentOptions.some((element) => element.label === additionalOptions()[index].label  )  ? true : false
-                }
-                type="checkbox"
-                onChange={handleSubmitOption}
-              ></input>
-            </div>
-          );
-        })}
-        
+            );
+          })}
+        </div>
         <div className="block-order__rent-time">
           <p>Укажите время аренды</p>
           {rentTimeOptions.map((option, index) => {
@@ -184,15 +201,16 @@ function OrderItem(props) {
             );
           })}
         </div>
-
-        <h1 className="block-order__final-price">{calculatePrice()}</h1>
-        {currentOptions.length < 1 ? optionsError() : ""}
-        <button
-          className="block-order__order-button"
-          onClick={handleOrderButton}
-        >
-          Оставить заявку
-        </button>
+        <div className="block-order__final-price__wrapper">
+          <h1 className="block-order__final-price">{calculatePrice()} ₽</h1>
+          {currentOptions.length < 1 ? optionsError() : ""}
+          <button
+            className="block-order__order-button"
+            onClick={handleOrderButton}
+          >
+            Оставить заявку
+          </button>
+        </div>
       </div>
     </>
   );
