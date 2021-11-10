@@ -66,7 +66,6 @@ function OrderItem(props) {
     }
   }
   function handleSubmitOption(e) {
-   
     if (
       !currentOptions.some(
         (element) => element.label === additionalOptions()[e.target.id].label
@@ -178,10 +177,9 @@ function OrderItem(props) {
                   <span>{option.price}₽</span>
                 </div>
 
-                <label   className="control control-checkbox">
-              
+                <label className="control control-checkbox">
                   <input
-                  name={index}
+                    name={index}
                     id={index}
                     checked={
                       currentOptions.some(
@@ -195,7 +193,9 @@ function OrderItem(props) {
                     onChange={handleSubmitOption}
                   ></input>
                   <div className="control_indicator"></div>
-                  <label className="label-hidden"  for={index} >2</label>
+                  <label className="label-hidden" for={index}>
+                    2
+                  </label>
                 </label>
               </div>
             );

@@ -16,9 +16,10 @@ button {
   cursor: pointer;
 }
 
-img{
+img {
   object-fit: scale-down;
 }
+
 #root {
   display: flex;
   justify-content: center;
@@ -27,8 +28,9 @@ img{
 .hidden {
   display: none;
 }
-.label-hidden{
- 
+
+.label-hidden {
+  opacity: 0;
 }
 
 .block-order__item button:hover, .order-modal button:hover {
