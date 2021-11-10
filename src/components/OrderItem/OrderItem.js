@@ -179,7 +179,7 @@ function OrderItem(props) {
                 </div>
 
                 <label   className="control control-checkbox">
-                  <label for={index} ></label>qwe
+              
                   <input
                   name={index}
                     id={index}
@@ -195,6 +195,7 @@ function OrderItem(props) {
                     onChange={handleSubmitOption}
                   ></input>
                   <div className="control_indicator"></div>
+                  <label className="label-hidden"  for={index} >2</label>
                 </label>
               </div>
             );

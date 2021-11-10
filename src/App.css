@@ -27,6 +27,9 @@ img{
 .hidden {
   display: none;
 }
+.label-hidden{
+ 
+}
 
 .block-order__item button:hover, .order-modal button:hover {
   opacity: 0.7;

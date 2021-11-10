@@ -91,7 +91,7 @@
     color: #131313;
 }
 
-.block-promotion__features__title a {
+.block-promotion__features__title span {
     color: #EE3D48;
     text-decoration: underline;
 }

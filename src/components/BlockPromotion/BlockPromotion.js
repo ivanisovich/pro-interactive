@@ -61,7 +61,7 @@ function BlockPromotion() {
           <h1 className="block-promotion__header">праздник</h1>
           <p className="block-promotion__features__title">
             Lorem ipsum dolor sit amet, consectetur{" "}
-            <a href=" ">adipiscing elit</a>, sed do eiusmod tempor <br />{" "}
+            <span >adipiscing elit</span>, sed do eiusmod tempor <br />{" "}
             incididunt ut labore et dolore magna aliqua.
           </p>
           <div className="block-promotion__features-wrapper">
