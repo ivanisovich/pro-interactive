@@ -1,10 +1,10 @@
+import "./OrderItem.css";
+import "./CustomCheckbox.css";
 import React, { useState, useEffect } from "react";
 import slide_1 from "../../img/photo.jpg";
 import slide_2 from "../../img/photo-1.jpg";
 import slide_3 from "../../img/photo-2.jpg";
 import optionPhoto from "../../img/photo-option.jpg";
-import "./OrderItem.css";
-import "./CustomCheckbox.css";
 import button from "../../img/button.png";
 
 function OrderItem(props) {
@@ -66,6 +66,7 @@ function OrderItem(props) {
     }
   }
   function handleSubmitOption(e) {
+   
     if (
       !currentOptions.some(
         (element) => element.label === additionalOptions()[e.target.id].label
@@ -115,18 +116,27 @@ function OrderItem(props) {
       <div className="block-order__item">
         <div className="block-order__slider">
           <img
+            height="40px"
+            width="40px"
             className="slider__previous"
             alt=""
             onClick={handleClickPrevious}
             src={button}
           ></img>
           <img
+            height="40px"
+            width="40px"
             className="slider__next"
             alt=""
             onClick={handleClickNext}
             src={button}
           ></img>
-          <img alt="current photobooth slide" src={currentSlideSrc}></img>
+          <img
+            height="222px"
+            width="296px"
+            alt="current photobooth slide"
+            src={currentSlideSrc}
+          ></img>
         </div>
         <div className="slider__navigation">
           {sliderLength.map((sliderCount, index) => {
@@ -157,14 +167,21 @@ function OrderItem(props) {
           {props.additionalOptions().map((option, index) => {
             return (
               <div className="block-order__item-option" key={index}>
-                <img alt="additional option" src={optionPhoto}></img>
+                <img
+                  height="60px"
+                  width="60px"
+                  alt="additional option"
+                  src={optionPhoto}
+                ></img>
                 <div>
                   <h1>{option.label}</h1>
                   <span>{option.price}₽</span>
                 </div>
 
-                <label className="control control-checkbox">
+                <label   className="control control-checkbox">
+                  <label for={index} ></label>qwe
                   <input
+                  name={index}
                     id={index}
                     checked={
                       currentOptions.some(

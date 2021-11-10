@@ -9,18 +9,16 @@ h1 {
 
 .App {
   color: #131313;
-  max-width: 375px;
+  max-width: 360px;
 }
 
 button {
   cursor: pointer;
 }
 
-img {
- height: 400px;
- width: 400px;
+img{
+  object-fit: scale-down;
 }
-
 #root {
   display: flex;
   justify-content: center;

@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+
 import "./BlockOrder.css";
+import React, { useState, useEffect } from "react";
 import OrderItem from "../OrderItem/OrderItem";
 
 function BlockOrder(props) {
@@ -36,7 +37,7 @@ function BlockOrder(props) {
     <>
       <div className="block-order">
         <h1 className="block-order__header">Фотобудки</h1>
-        {OrderItems().map((item, index) => {
+        {OrderItems().map((index) => {
           return (
             <OrderItem
               additionalOptions={additionalOptions}

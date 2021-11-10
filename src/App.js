@@ -1,10 +1,13 @@
 import "./App.css";
-import React, { useState } from "react";
-import BlockOrder from "./components/BlockOrder/BlockOrder";
-import BlockPromotion from "./components/BlockPromotion.js/BlockPromotion";
-import OrderModal from "./components/OrderModal/OrderModal";
+import logo from './logo.svg';
+import React, {lazy, useState ,Suspense} from "react";
+import BlockPromotion from "./components/BlockPromotion/BlockPromotion"
+import BlockOrder from "./components/BlockOrder/BlockOrder"
 
 function App() {
+ 
+  const OrderModal = lazy(() => import("./components/OrderModal/OrderModal"));
+ 
   const [currentRentTime, setCurrentRentTime] = useState("1 час");
   const [currentOptions, setCurrentOptions] = useState([{label:"Разработка макета #1",price:2500}]);
   const [photoBoothNumber, setPhotoBoothNumber] = useState(1);
@@ -13,7 +16,8 @@ function App() {
   
   return (
     <div className="App">
-      {showOrder ? (
+      <Suspense fallback={ <img src={logo} className="App-logo" alt="logo" />}>
+      {showOrder && BlockOrder ? (
         <OrderModal
           setCurrentOptions={setCurrentOptions}
           totalPrice={totalPrice}
@@ -38,6 +42,8 @@ function App() {
           />
         </>
       )}
+      </Suspense>
+   
     </div>
   );
 }

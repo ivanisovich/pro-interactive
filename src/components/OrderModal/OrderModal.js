@@ -1,6 +1,6 @@
+import "./OrderModal.css";
 import React, { useEffect } from "react";
 import closeModal from "../../img/close-modal.svg";
-import "./OrderModal.css";
 
 function OrderModal(props) {
   const rentTimeOptions = [
@@ -59,6 +59,8 @@ function OrderModal(props) {
         <img
           className="order-modal__close-button"
           alt=""
+          height="17.5px"
+          width="17.5px"
           src={closeModal}
           onClick={handleCloseModal}
         ></img>
